@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import EmployeeListing from './EmployeeListing.jsx';
 import TimesheetEntry from './TimesheetEntry.jsx';
- 
+import 'whatwg-fetch'
+
 class Timesheet extends React.Component { 
 
 	constructor(props) {
@@ -13,6 +14,27 @@ class Timesheet extends React.Component {
 		    ], 
 		    showTimesheet : false
 		};
+
+		
+  	}
+
+  	componentWillMount()
+  	{
+
+  		fetch('./app/person.json')
+  			.then(function(response) {
+    		return response.json()
+  		}).then(function(json) {
+    		console.log('parsed json', json)
+
+    		this.setState({
+    			employes : json
+    		});
+
+  		}).catch(function(ex) {
+    		console.log('parsing failed', ex)
+  		})
+
   	}
 
   	handleEmployeeSelected(e)
