@@ -6,16 +6,27 @@ class TimesheetEntry extends React.Component {
     	super(props);
   	}
 
+  	handleCommmand(e) {
+		this.props.onSelectCommand(e);
+  	}
+
   	render() {
 
 			return <div> 
-			<span> Monday </span>
-			<span> Tuesday </span>
-			<span> Wednesday</span>
-			<span> Thursday</span>
-			<span> Friday</span>
-			<span> Saturday</span>
+			<div><span> Monday <input type='text' id=''/> </span>
+			<span> Tuesday <input type='text' id=''/> </span>
+			<span> Wednesday <input type='text' id=''/> </span>
+			<span> Thursday <input type='text' id=''/> </span>
+			<span> Friday <input type='text' id=''/> </span>
+			<span> Saturday <input type='text' id=''/> </span>
 			</div>
+			<div>
+				<input type='button' value='Ok' onClick={ (e) => { this.handleCommmand(0) }}  />
+				<input type='button' value='Cancel' onClick={ (e) => { this.handleCommmand(1) }} />
+			</div>
+			</div>
+
+			
 	}
 }
 

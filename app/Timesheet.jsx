@@ -17,8 +17,6 @@ class Timesheet extends React.Component {
 
   	handleEmployeeSelected(e)
   	{
-  		console.log(e);
-
   		if (e != null)
   		{
   			console.log("selecting employee.");
@@ -28,12 +26,17 @@ class Timesheet extends React.Component {
   		}
   	} 
 
-  	handleTest(e)
+  	handleSelectCommand(e)
   	{
-  		console.log('we are here');
-  		this.setState({
-	    	  	showTimesheet: true
+  		var a = typeof e;
+  		console.log(a);
+
+  		if (e == 1)
+  		{
+  			this.setState({
+	    		  	showTimesheet: false
     		});
+  		}
   	}
 
 	render() {
@@ -46,8 +49,8 @@ class Timesheet extends React.Component {
 		return <div>
 		 <h1> Simple Timesheet Entry </h1> :-
 		 	<div> { employees }  </div>
-		 	<div>  { this.state.showTimesheet ? <TimesheetEntry /> : null } </div>
-		 	 <input type='button' value='Ok' onClick={ () => { this.handleTest() }} />
+		 	<div>  { this.state.showTimesheet ? <TimesheetEntry 
+		 		onSelectCommand={ (e) => { this.handleSelectCommand(e) }} /> : null } </div>
 		</div>
 	}
 }	
