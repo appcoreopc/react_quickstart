@@ -9,33 +9,27 @@ class Timesheet extends React.Component {
 	constructor(props) {
     	super();
     	this.state = {
-    		employees: [
-    		{ "id" : 1, "name" : "Mark"}, { "id" : 2, "name" : "Jessie"}, { "id" : 3, "name" : "Janet"}, { "id" : 4, "name" : "Winston"}, { "id" : 5, "name" : "Jacob"}, { "id" : 5, "name" : "William"}
-		    ], 
+    		employees: [], 
 		    showTimesheet : false
 		};
-
-		
   	}
 
-  	componentWillMount()
-  	{
+  	componentDidMount()
+  	{  		
+  		var self = this; 
 
   		fetch('./app/person.json')
   			.then(function(response) {
     		return response.json()
   		}).then(function(json) {
-    		console.log('parsed json', json)
-
-    		this.setState({
-    			employes : json
+    		self.setState({
+    			employees : json
     		});
-
   		}).catch(function(ex) {
     		console.log('parsing failed', ex)
   		})
-
   	}
+
 
   	handleEmployeeSelected(e)
   	{
